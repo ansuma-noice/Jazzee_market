@@ -1,0 +1,75 @@
+/* pages/RegisterSteps.module.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f8f9fa; /* Light background color */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .title {
+    font-size: 3.5rem;
+    font-family: 'Bangers', cursive;
+    color: #333;
+    margin-bottom: 180px;
+  }
+  
+  .cardsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center cards horizontally */
+    gap: 20px; /* Space between cards */
+    flex-wrap: nowrap; /* Ensure cards do not wrap */
+  }
+  
+  .card {
+    background: #fff;
+    border: 2px solid #0070f3; /* Blue border for visibility */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 200px; /* Fixed width for consistency */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .card h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #0070f3;
+  }
+  
+  .card p {
+    margin: 10px 0 0;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .arrow {
+    font-size: 2rem;
+    color: #0070f3;
+    line-height: 2rem;
+  }
+  
+  .getStartedButton {
+    margin-top: 130px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #0070f3; /* Button color */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block; /* Ensure the button is inline-block for proper sizing */
+  }
+  
+  .getStartedButton:hover {
+    background-color: #005bb5; /* Darker button color on hover */
+  }
+  

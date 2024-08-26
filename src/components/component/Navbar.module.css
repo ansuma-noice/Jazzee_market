@@ -1,0 +1,25 @@
+/* components/Navbar.module.css */
+.navbar {
+    width: 100%;
+    padding: 1px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+  
+  .scrolled {
+    background-color: #ffffff; /* Change this color as needed */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo img {
+    height: 100px; /* Adjust based on your logo size */
+  }
+  
+  
