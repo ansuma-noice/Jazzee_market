@@ -1,7 +1,7 @@
 /* components/LandingPage.module.css */
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 .landingPage {
-    background-image: url('/bg2.jpg');  /* Replace with your actual image path */
+    /* Replace with your actual image path */
     background-size: cover;                    /* Ensures the image covers the entire screen */
     background-position: center;               /* Centers the image */
     background-repeat: no-repeat;              /* Prevents the image from repeating */
@@ -24,8 +24,7 @@
   
   .carouselContainer {
     width: 100%;/* Max width for carousel container */
-    overflow: hidden;
-    position: absolute;                        /* Position carousel at the bottom */
+    overflow: hidden;/* Position carousel at the bottom */
     bottom: 0;                                 /* Align with the bottom of the page */
     left: 50%;
     transform: translateX(-50%);               /* Center carousel horizontally */

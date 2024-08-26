@@ -1,32 +1,31 @@
 .container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .leftHalf {
-    width: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
-  }
-  
-  .circle {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: box-shadow 0.3s ease-in-out;
-  }
-  
-  /* .glow {
-    box-shadow: 0 0 15px 5px gold;
+  display: flex;
+  height: 100vh;
+}
+
+.leftHalf {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* .glow {
+  box-shadow: 0 0 15px 5px gold;
   } */
   .circle:hover {
     box-shadow: 0 0 15px 5px gold;
@@ -37,11 +36,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
+    color: #ffffff;
   }
   
   .rightHalf h1 {
-    font-size: 24px;
+    font-size: 30px;
+    font-family: 'Bangers';
     text-align: center;
   }
   

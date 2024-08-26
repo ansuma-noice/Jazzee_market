@@ -12,8 +12,8 @@ export default function Home() {
       <div>
         <Navbar />
         <LandingPage />
-        <SecondPage/>
-        <RegisterSteps/>
+        <SecondPage />
+        <RegisterSteps />
       </div>
     </div>
   );

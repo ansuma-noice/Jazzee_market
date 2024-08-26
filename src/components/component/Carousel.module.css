@@ -1,38 +1,37 @@
 /* components/Carousel.module.css */
 .carousel {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carouselTrack {
+  display: flex;
+  width: 100vw;
+  animation: scroll 30s linear infinite;
+  gap: 2px; /* Space between carousel items */
+}
+
+.carouselItem {
+  flex: 0 0 calc(10% - 20px);
+  text-align: center;
+  padding: 20px; /* Ensure transparency */
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.carouselItem img {
+  width: 80px; /* Set a fixed width for logos */
+  height: 80px; /* Set a fixed height for logos */
+  object-fit: contain; /* Ensure logos maintain aspect ratio */ /* Ensure the image background is transparent */
+  filter: brightness(0) invert(1);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
   }
-  
-  .carouselTrack {
-    display: flex;
-    width: calc(150%);
-    animation: scroll 30s linear infinite;
-    gap: 2px; /* Space between carousel items */
+  to {
+    transform: translateX(-100%);
   }
-  
-  .carouselItem {
-    flex: 0 0 calc(10% - 20px);
-    text-align: center;
-    padding: 20px; /* Ensure transparency */
-    box-sizing: border-box;
-    border-radius: 8px;
-  }
-  
-  .carouselItem img {
-    width: 80px;  /* Set a fixed width for logos */
-    height: 80px; /* Set a fixed height for logos */
-    object-fit: contain; /* Ensure logos maintain aspect ratio *//* Ensure the image background is transparent */
-    filter: brightness(0) invert(1);
-  }
-  
-  @keyframes scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  }
-  
+}

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button"
 import styles from './Navbar.module.css';
+import Link from 'next/link';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,9 +24,9 @@ const Navbar: React.FC = () => {
       <div className={styles.logo}>
         <img src="/jazzee2.png" alt="Company Logo" />
       </div>
-      <div>
-        <Button>Get Started</Button>
-      </div>
+      <Link href="/register" className={styles.getStartedButton}>
+        Register→
+      </Link>
     </nav>
   );
 };
