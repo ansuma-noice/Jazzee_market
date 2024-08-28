@@ -1,7 +1,7 @@
 // components/Navbar.tsx
-"use client"
+"use client";
+
 import React, { useState, useEffect } from 'react';
-import { Button } from "@/components/ui/button"
 import styles from './Navbar.module.css';
 import Link from 'next/link';
 
@@ -22,10 +22,12 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.logo}>
+        <Link href="/">
         <img src="/jazzee2.png" alt="Company Logo" />
+        </Link>
       </div>
-      <Link href="/register" className={styles.getStartedButton}>
-        Register→
+      <Link href="/login" className={styles.getStartedButton}>
+        Login →
       </Link>
     </nav>
   );

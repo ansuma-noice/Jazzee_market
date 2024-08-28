@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './RegisterForms.module.css';
 import { PlusCircleIcon, PlusIcon, Trash2 } from 'lucide-react';
+import Link from 'next/link';
 
 interface SectorOption {
     value: string;
@@ -114,6 +115,7 @@ const RegisterForms: React.FC = () => {
                         <input className={styles.formField} type="email" placeholder="Work Email" />
                         <input className={styles.formField} type="tel" placeholder="Phone Number" />
                         <input className={styles.formField} type="text" placeholder="Company Name" />
+                        <input className={styles.formField} type="url" placeholder="Company official website" />
                         <div className={styles.tupleContainer}>
                             {recruiterTuples.map((tuple, index) => (
                                 <div key={index} className={styles.tuple}>
@@ -131,7 +133,7 @@ const RegisterForms: React.FC = () => {
                                     </select>
                                     <input
                                         className={styles.formField}
-                                        type="text"
+                                        type="number"
                                         placeholder="Job Openings (in number)"
                                         value={tuple.jobOpenings.join(', ')}
                                         onChange={(e) => handleRecruiterTupleChange(index, 'jobOpenings', e.target.value.split(',').map(s => s.trim()))}
@@ -144,8 +146,8 @@ const RegisterForms: React.FC = () => {
                                     />
                                     <input
                                         className={styles.formField}
-                                        type="text"
-                                        placeholder="Experience Required"
+                                        type="number"
+                                        placeholder="Experience Required(in years)"
                                         value={tuple.experienceRequired}
                                         onChange={(e) => handleRecruiterTupleChange(index, 'experienceRequired', e.target.value)}
                                     />
@@ -173,11 +175,12 @@ const RegisterForms: React.FC = () => {
                 {activeForm === 'campus' && (
                     <>
                         <input className={styles.formField} type="text" placeholder="University Name" />
+                        <input className={styles.formField} type="url" placeholder="University official website" />
+                        <input className={styles.formField} type="email" placeholder="Placement Center Email" />
                         <input className={styles.formField} type="text" placeholder="Placement Coordinator Name" />
-                        <input className={styles.formField} type="email" placeholder="Placement Coordinator Email" />
                         <input className={styles.formField} type="tel" placeholder="Placement Coordinator Phone Number" />
-                        <input className={styles.formField} type="text" placeholder="College Address" />
-                        <input className={styles.formField} type="text" placeholder="Pin Code" />
+                        <input className={styles.formField} type="text" placeholder="University Address" />
+                        <input className={styles.formField} type="number" placeholder="Pin Code" />
                         <div className={styles.tupleContainer}>
                             {campusTuples.map((tuple, index) => (
                                 <div key={index} className={styles.tuple}>
@@ -195,7 +198,7 @@ const RegisterForms: React.FC = () => {
                                     </select>
                                     <input
                                         className={styles.formField}
-                                        type="text"
+                                        type="number"
                                         placeholder="Job Openings(in number)"
                                         value={tuple.jobOpenings}
                                         onChange={(e) => handleCampusTupleChange(index, 'jobOpenings', e.target.value)}
@@ -219,6 +222,9 @@ const RegisterForms: React.FC = () => {
                     </>
                 )}
             </div>
+            <Link href="/login" className={styles.link}>
+        existing user?Login →
+      </Link>
         </div>
     );
 };

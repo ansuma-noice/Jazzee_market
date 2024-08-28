@@ -9,7 +9,7 @@
   display: flex;
   width: 100vw;
   animation: scroll 30s linear infinite;
-  gap: 2px; /* Space between carousel items */
+  gap: 1.5px; /* Space between carousel items */
 }
 
 .carouselItem {
@@ -21,8 +21,8 @@
 }
 
 .carouselItem img {
-  width: 80px; /* Set a fixed width for logos */
-  height: 80px; /* Set a fixed height for logos */
+  width: 60px; /* Set a fixed width for logos */
+  height: 60px; /* Set a fixed height for logos */
   object-fit: contain; /* Ensure logos maintain aspect ratio */ /* Ensure the image background is transparent */
   filter: brightness(0) invert(1);
 }

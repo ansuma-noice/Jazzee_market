@@ -12,7 +12,7 @@ export default function SecondPage() {
     { id: 10, name: 'College 3', logo: '/IITM.png',url:'https://www.iitm.ac.in' },
     { id: 11, name: 'College 3', logo: '/ru.png',url:'https://www.uniraj.ac.in' },
     { id: 12, name: 'College 3', logo: '/bitsp.png',url:'https://www.bits-pilani.ac.in' },
-    { id: 13, name: 'College 3', logo: '/nitt.png',url:'https://www.nitt.ac.in' },
+    { id: 13, name: 'College 3', logo: '/nitt.png',url:'https://www.nitt.edu' },
     { id: 7, name: 'College 3', logo: '/IITK.jpeg',url:'https://www.iitk.ac.in' },
     { id: 13, name: 'College 3', logo: '/lpu.png',url:'https://www.lpu.in' },
     { id: 4, name: 'College 3', logo: '/IITB.jpeg',url:'https://www.iitb.ac.in' },

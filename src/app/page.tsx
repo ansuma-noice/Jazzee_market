@@ -8,7 +8,7 @@ import RegisterSteps from "@/components/component/registerSteps";
 
 export default function Home() {
   return (
-    <div>
+    <div className="custom-scrollbar">
       <div>
         <Navbar />
         <LandingPage />

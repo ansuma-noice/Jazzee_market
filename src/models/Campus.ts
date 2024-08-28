@@ -4,13 +4,14 @@ const CampusSchema = new mongoose.Schema({
   universityName: String,
   coordinatorName: String,
   coordinatorEmail: String,
-  coordinatorPhoneNumber: String,
+  universitySite:String,
+  coordinatorPhoneNumber: Number,
   collegeAddress: String,
-  pinCode: String,
+  pinCode: Number,
   jobTuples: [
     {
       sector: String,
-      jobOpenings: String,
+      jobOpenings: Number,
     },
   ],
 });

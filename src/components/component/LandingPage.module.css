@@ -16,18 +16,17 @@
   }
   
   .headline {
-    font-size: 3.5rem;
+    font-size: 3.8rem;
     font-weight: bold;
-    margin-top: 300px; /* Space between headline and carousel */
+    margin-top: 250px; /* Space between headline and carousel */
     font-family: 'Bangers';
   }
   
   .carouselContainer {
     width: 100%;/* Max width for carousel container */
     overflow: hidden;/* Position carousel at the bottom */
-    bottom: 0;                                 /* Align with the bottom of the page */
-    left: 50%;
-    transform: translateX(-50%);               /* Center carousel horizontally */
-    margin-bottom: 20px;                       /* Space between carousel and bottom edge */
+    bottom: 0;               /* Center carousel horizontally */
+    margin-bottom: 5px;         
+                  /* Space between carousel and bottom edge */
   }
   

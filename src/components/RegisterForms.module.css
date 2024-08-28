@@ -129,4 +129,13 @@
   }
 }
 
-
+.link{
+  color:#ccc;
+  font-size:1rem;
+  /* margin-bottom:5px; */
+  text-align: center;
+}
+.link:hover{
+  text-decoration: underline;
+  color: #cccccc88;
+}

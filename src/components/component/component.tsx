@@ -14,6 +14,11 @@ const companies = [
   { name: 'Company 8', svgPath: '/images/netflix.svg' },
   { name: 'Company 9', svgPath: '/images/apple.svg' },
   { name: 'Company 10', svgPath: '/images/activision.svg' },
+  { name: 'Company 11', svgPath: '/images/heroku.svg' },
+  { name: 'Company 12', svgPath: '/images/telegram.svg' },
+  { name: 'Company 13', svgPath: '/images/ey.svg' },
+  { name: 'Company 14', svgPath: '/images/qualcomm.svg' },
+  { name: 'Company 15', svgPath: '/images/hsbc.svg' },
 ];
 
 export const Carousel: React.FC = () => {
@@ -25,8 +30,8 @@ export const Carousel: React.FC = () => {
             <Image 
               src={company.svgPath} 
               alt={company.name} 
-              width={80} 
-              height={80} 
+              width={40} 
+              height={40} 
               style={{ backgroundColor: 'transparent' }} // Ensure transparency
             />
           </div>

@@ -5,12 +5,13 @@ const RecruiterSchema = new mongoose.Schema({
   workEmail: String,
   phoneNumber: String,
   companyName: String,
+  companySite:String,
   jobTuples: [
     {
       sector: String,
-      jobOpenings: [String],
+      jobOpenings: Number,
       jobDescription: String,
-      experienceRequired: String,
+      experienceRequired: Number,
     },
   ],
 });
