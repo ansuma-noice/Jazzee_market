@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import {connect} from '@/lib/mongodb';
+import connect from '@/lib/mongodb';
 import Campus from '@/models/Campus';
 import { NextRequest, NextResponse } from 'next/server';
 import bcryptjs from "bcryptjs"

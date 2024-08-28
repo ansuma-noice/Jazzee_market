@@ -7,7 +7,7 @@ const StudentSchema = new mongoose.Schema({
   collegeName: String,
   sector: String,
   jobRole: String,
-  resume: String, // Assuming you're storing a URL or file path for the resume
+  resume: { type: String, required: true }, // Assuming you're storing a URL or file path for the resume
 });
 
 export default mongoose.models.Student || mongoose.model('Student', StudentSchema);

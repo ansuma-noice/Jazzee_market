@@ -17,7 +17,7 @@ let campusData = [];
 // Routes
 
 // Student Form Route
-app.post('/api/student', (req, res) => {
+app.post('/pages/api/student', (req, res) => {
     const { name, email, phoneNumber, collegeName, sector, jobRole, resume } = req.body;
 
     // Here, you can add logic to save this data to a database or process it as needed.
@@ -27,21 +27,21 @@ app.post('/api/student', (req, res) => {
 });
 
 // Recruiter Form Route
-app.post('/api/recruiter', (req, res) => {
+app.post('/pages/api/recruiter', (req, res) => {
     const { name, workEmail, phoneNumber, companyName, tuples } = req.body;
 
     // Here, you can add logic to save this data to a database or process it as needed.
-    recruiterData.push({ name, workEmail, phoneNumber, companyName, tuples });
+    recruiterData.push({ name, workEmail, phoneNumber, companyName,companySite, tuples });
 
     res.status(200).json({ message: 'Recruiter data received successfully!' });
 });
 
 // Campus Form Route
-app.post('/api/campus', (req, res) => {
+app.post('/pages/api/campus', (req, res) => {
     const { universityName, coordinatorName, coordinatorEmail, coordinatorPhone, collegeAddress, pinCode, tuples } = req.body;
 
     // Here, you can add logic to save this data to a database or process it as needed.
-    campusData.push({ universityName, coordinatorName, coordinatorEmail, coordinatorPhone, collegeAddress, pinCode, tuples });
+    campusData.push({ universityName,universitySite, coordinatorName, coordinatorEmail, coordinatorPhone, collegeAddress, pinCode, tuples });
 
     res.status(200).json({ message: 'Campus data received successfully!' });
 });

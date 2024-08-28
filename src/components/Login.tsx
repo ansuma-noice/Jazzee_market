@@ -1,19 +1,41 @@
-// pages/login.tsx
+// /pages/login.tsx
+
 "use client";
 
 import React, { useState } from 'react';
 import styles from './Login.module.css';
-import RegisterForms from './RegisterForms';
 import Link from 'next/link';
-
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [designation, setDesignation] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
+
+    try {
+      const response = await fetch('/api/checkUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.exists) {
+          // Handle successful login or redirection
+          console.log('User exists, designation:', data.designation);
+        }
+      } else {
+        const data = await response.json();
+        setError(data.message); // Show error if user does not exist
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again.');
+    }
   };
 
   return (
@@ -33,7 +55,7 @@ const Login: React.FC = () => {
           value={designation}
           onChange={(e) => setDesignation(e.target.value)}
         >
-         <option value="Select designation">Select Designation</option>
+          <option value="Select designation">Select Designation</option>
           <option value="student">Student</option>
           <option value="recruiter">Recruiter</option>
           <option value="campus">Campus</option>
@@ -42,9 +64,11 @@ const Login: React.FC = () => {
           Login
         </button>
 
+        {error && <p className={styles.error}>{error}</p>}
+
         <Link href="/register" className={styles.link}>
-        new user?Register →
-      </Link>
+          new user? Register →
+        </Link>
       </form>
     </div>
   );

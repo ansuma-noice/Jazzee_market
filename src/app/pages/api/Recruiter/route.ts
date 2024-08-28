@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { connect } from "@/lib/mongodb";
+import connect  from "@/lib/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import Recruiter from "@/models/Recruiter";
 
@@ -8,7 +8,7 @@ connect();
 export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
-    const { name, workEmail, phoneNumber, companyName, jobTuples } = reqBody;
+    const { name, workEmail, phoneNumber, companyName,companySite, jobTuples } = reqBody;
 
     const user = await Recruiter.findOne({ workEmail });
 
@@ -24,6 +24,7 @@ export async function POST(request: NextRequest) {
       workEmail,
       phoneNumber,
       companyName,
+      companySite,
       jobTuples,
     });
 

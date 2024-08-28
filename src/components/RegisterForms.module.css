@@ -1,5 +1,3 @@
-/* RegisterForms.module.css */
-
 .container {
   display: flex;
   flex-direction: column;
@@ -27,9 +25,9 @@
 
 .activeTitle {
   color: rgb(240, 233, 233);
-  font-size:x-large;
-  background-color:  rgba(12, 32, 65, 0.5);
-  transition: transform 1 s ease-in;
+  font-size: x-large;
+  background-color: rgba(12, 32, 65, 0.5);
+  transition: transform 1s ease-in;
 }
 
 .form {
@@ -52,7 +50,7 @@
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid  rgba(12, 32, 65, 0.5);
+  border: 1px solid rgba(12, 32, 65, 0.5);
   font-size: 1rem;
   color: white;
   background-color: rgba(8, 27, 58, 0.5);
@@ -64,10 +62,10 @@
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
-  border: 0 px solid #cccccc;
+  border: 0px solid #cccccc;
   font-size: 1rem;
   resize: none;
-  background-color:  rgba(27, 46, 75, 0.5);
+  background-color: rgba(27, 46, 75, 0.5);
   color: #fff;
 }
 
@@ -83,37 +81,86 @@
   transition: background-color 0.3s ease;
 }
 
-.tupleButtons {
-  display: flex;
-  justify-content: space-between;
-}
-
 .button:hover {
   background-color: #0379f6cd;
 }
 
 .removeButton {
-  background-color:  rgb(129, 0, 36);
+  background-color: rgb(129, 0, 36);
+  size: 3px;
 }
 
 .removeButton:hover {
-  background-color:  rgba(250, 71, 71, 0.5);
+  background-color: rgba(250, 71, 71, 0.5);
 }
 
 .tupleContainer {
   margin: 20px 0;
 }
 
-.tuple {
+.tuple1 {
   margin-bottom: 20px;
-  background-color:  rgba(12, 32, 65, 0.5);
+  background-color: rgba(12, 32, 65, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  display: block;
+  gap: 10px;
 }
-.uploadText{
-  color:#fff;
+.tuple2 {
+  margin-bottom: 20px;
+  background-color: rgba(12, 32, 65, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  gap: 10px;
+}
+
+.tupleButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trashIcon {
+  cursor: pointer;
+  color: rgb(250, 71, 71);
+  margin-left: 10px;
+  transition: color 0.3s ease;
+  width: 32px; /* Set width explicitly */
+  height: 32px;
+}
+
+.trashIcon:hover {
+  color: rgba(250, 71, 71, 0.8);
+}
+
+.plusIcon {
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 20px 0;
+  transition: color 0.3s ease;
+}
+
+.plusIcon:hover {
+  color: #0379f6cd;
+}
+
+.uploadText {
+  color: #fff;
   font-weight: 200;
   margin-left: 10px;
 }
 
+.link {
+  color: #ccc;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #cccccc88;
+}
 
 @media (max-width: 768px) {
   .form {
@@ -127,15 +174,4 @@
   .title {
     padding: 10px 0;
   }
-}
-
-.link{
-  color:#ccc;
-  font-size:1rem;
-  /* margin-bottom:5px; */
-  text-align: center;
-}
-.link:hover{
-  text-decoration: underline;
-  color: #cccccc88;
 }
