@@ -86,7 +86,7 @@
 }
 
 .removeButton {
-  background-color: rgb(129, 0, 36);
+  background-color: rgba(112, 7, 7, 0.5);
   size: 3px;
 }
 
@@ -100,7 +100,7 @@
 
 .tuple1 {
   margin-bottom: 20px;
-  background-color: rgba(12, 32, 65, 0.5);
+  background-color: rgba(10, 26, 53, 0.5);
   padding: 10px;
   border-radius: 5px;
   display: block;
@@ -108,7 +108,7 @@
 }
 .tuple2 {
   margin-bottom: 20px;
-  background-color: rgba(12, 32, 65, 0.5);
+  background-color:rgba(10, 26, 53, 0.5);
   padding: 10px;
   border-radius: 5px;
   display: flex;

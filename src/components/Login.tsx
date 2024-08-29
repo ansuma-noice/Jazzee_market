@@ -1,37 +1,63 @@
-// /pages/login.tsx
-
 "use client";
 
 import React, { useState } from 'react';
 import styles from './Login.module.css';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [designation, setDesignation] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter(); // Initialize useRouter hook
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    let endpoint = '';
+    let body = {};
+
+    switch (designation) {
+      case 'student':
+        endpoint = '/pages/api/login/Student';
+        body = { email, password };
+        break;
+      case 'recruiter':
+        endpoint = '/pages/api/login/Recruiter';
+        body = { workEmail: email, password };
+        break;
+      case 'campus':
+        endpoint = '/pages/api/login/Campus';
+        body = { coordinatorEmail: email, password };
+        break;
+      default:
+        setError('Please select a valid designation.');
+        return;
+    }
+
     try {
-      const response = await fetch('/api/checkUser', {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify(body),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        if (data.exists) {
-          // Handle successful login or redirection
-          console.log('User exists, designation:', data.designation);
+      const data = await response.json();
+
+      if (data.exists) {
+        // Redirect based on designation
+        if (designation === 'recruiter') {
+          router.push('/recruiter'); // Redirect to recruiter page
+        } else if (designation === 'student') {
+          router.push('/recruitee'); // Redirect to recruitee page
+        } else if (designation === 'campus') {
+          router.push('/recruitee'); // Redirect to campus page
         }
       } else {
-        const data = await response.json();
-        setError(data.message); // Show error if user does not exist
+        setError(data.message || 'Invalid credentials.');
       }
     } catch (err) {
       setError('An error occurred. Please try again.');
@@ -50,12 +76,20 @@ const Login: React.FC = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+        <input
+          type="password"
+          className={styles.input}
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
         <select
           className={styles.select}
           value={designation}
           onChange={(e) => setDesignation(e.target.value)}
         >
-          <option value="Select designation">Select Designation</option>
+          <option value="">Select Designation</option>
           <option value="student">Student</option>
           <option value="recruiter">Recruiter</option>
           <option value="campus">Campus</option>
@@ -67,7 +101,7 @@ const Login: React.FC = () => {
         {error && <p className={styles.error}>{error}</p>}
 
         <Link href="/register" className={styles.link}>
-          new user? Register →
+          New user? Register →
         </Link>
       </form>
     </div>

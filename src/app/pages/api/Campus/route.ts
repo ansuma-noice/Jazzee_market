@@ -2,26 +2,29 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import connect from '@/lib/mongodb';
 import Campus from '@/models/Campus';
 import { NextRequest, NextResponse } from 'next/server';
-import bcryptjs from "bcryptjs"
-
+import bcrypt from "bcryptjs"; 
 connect();
 
 export async function POST(request: NextRequest){
     try {
         const reqBody = await request.json();
-        const {universityName,coordinatorName,coordinatorEmail,coordinatorPhoneNumber,collegeAddress,pinCode,jobTuples} = reqBody;
-
+        const {designation,universityName,coordinatorName,coordinatorEmail,universitySite,coordinatorPhoneNumber,collegeAddress,pinCode,jobTuples,password} = reqBody;
+        
         const user = await Campus.findOne({coordinatorEmail});
-
+        
         if(user){
             return NextResponse.json({error: "User already exist"},{status: 400});
         }
+        const hashedPassword = await bcrypt.hash(password, 10); // Hash the password with a salt round of 10
         
         const newUser = new Campus({
-            universityName,coordinatorName,coordinatorEmail,coordinatorPhoneNumber,collegeAddress,pinCode,jobTuples
+            designation,
+            universityName,coordinatorName,coordinatorEmail,universitySite,coordinatorPhoneNumber,collegeAddress,pinCode,jobTuples,
+            password:hashedPassword
         })
-
+        
         await newUser.save();
+        console.log('jingalala');
 
         return NextResponse.json({
             message: "User created successfully",

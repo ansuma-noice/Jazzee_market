@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './RegisterForms.module.css';
 import { Cross, PlusCircleIcon, X } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface SectorOption {
     value: string;
@@ -28,6 +29,8 @@ interface StudentData {
     sector: string;
     jobRole: string;
     resume?: any; // Correctly define the type
+    password: string;
+    designation: string;
 }
 
 const sectorOptions: SectorOption[] = [
@@ -42,10 +45,12 @@ const RegisterForms: React.FC = () => {
     const [campusTuples, setCampusTuples] = useState<CampusTuple[]>([{ sector: '', jobOpenings: '' }]);
     const [recruiterTuples, setRecruiterTuples] = useState<RecruiterTuple[]>([{ sector: '', jobOpenings: '', jobDescription: '', experienceRequired: '' }]);
 
+    const router=useRouter();
+
     // Form data states
-    const [studentData, setStudentData] = useState({ name: '', email: '', phoneNumber: '', collegeName: '', sector: '', jobRole: '', resume: '' });
-    const [recruiterData, setRecruiterData] = useState({ name: '', workEmail: '', phoneNumber: '', companyName: '', companySite: '', jobTuples: recruiterTuples });
-    const [campusData, setCampusData] = useState({ universityName: '', website: '', coordinatorEmail: '', coordinatorName: '', coordinatorPhoneNumber: '', address: '', pinCode: '', jobTuples: campusTuples });
+    const [studentData, setStudentData] = useState({ designation: 'student' ,name: '', email: '', phoneNumber: '', collegeName: '', sector: '', jobRole: '', resume: '', password: '' });
+    const [recruiterData, setRecruiterData] = useState({ designation: 'recruiter' ,name: '', workEmail: '', phoneNumber: '', companyName: '', companySite: '', jobTuples: recruiterTuples, password: '' });
+    const [campusData, setCampusData] = useState({designation: 'campus' ,universityName: '', universitySite: '', coordinatorEmail: '', coordinatorName: '', coordinatorPhoneNumber: 0, address: '', pinCode: '', jobTuples: campusTuples, password: '' });
 
     const handleCampusTupleChange = (index: number, key: keyof CampusTuple, value: string) => {
         const newTuples = [...campusTuples];
@@ -83,6 +88,7 @@ const RegisterForms: React.FC = () => {
 
     // Submission handlers
     const handleStudentSubmit = async () => {
+        // if(!router)return;
         try {
             const response = await fetch('/pages/api/Student', {
                 method: 'POST',
@@ -92,6 +98,7 @@ const RegisterForms: React.FC = () => {
             const data = await response.json();
             if (!response.ok) throw new Error(data.error || 'Failed to register student.');
             alert('Student registered successfully!');
+            router.push('/recruitee')
         } catch (error) {
             console.error(error);
             alert('An error occurred while registering the student.');
@@ -99,6 +106,7 @@ const RegisterForms: React.FC = () => {
     };
 
     const handleRecruiterSubmit = async () => {
+        // if(!router)return;
         try {
             const response = await fetch('/pages/api/Recruiter', {
                 method: 'POST',
@@ -108,6 +116,7 @@ const RegisterForms: React.FC = () => {
             const data = await response.json();
             if (!response.ok) throw new Error(data.error || 'Failed to register recruiter.');
             alert('Recruiter registered successfully!');
+            router.push('/recruiter')
         } catch (error) {
             console.error(error);
             alert('An error occurred while registering the recruiter.');
@@ -115,6 +124,7 @@ const RegisterForms: React.FC = () => {
     };
 
     const handleCampusSubmit = async () => {
+        // if(!router)return;                                 
         try {
             const response = await fetch('/pages/api/Campus', {
                 method: 'POST',
@@ -124,6 +134,7 @@ const RegisterForms: React.FC = () => {
             const data = await response.json();
             if (!response.ok) throw new Error(data.error || 'Failed to register campus.');
             alert('Campus registered successfully!');
+            router.push('/recruitee')
         } catch (error) {
             console.error(error);
             alert('An error occurred while registering the campus.');
@@ -155,7 +166,7 @@ const RegisterForms: React.FC = () => {
 
             <div className={`${styles.form} ${activeForm === 'student' ? styles.active : ''}`}>
                 {activeForm === 'student' && (
-                    <>
+                    <>  
                         <input className={styles.formField} type="text" placeholder="Name" onChange={(e) => setStudentData({ ...studentData, name: e.target.value })} />
                         <input className={styles.formField} type="email" placeholder="Email" onChange={(e) => setStudentData({ ...studentData, email: e.target.value })} />
                         <input className={styles.formField} type="tel" placeholder="Phone Number" onChange={(e) => setStudentData({ ...studentData, phoneNumber: e.target.value })} />
@@ -169,10 +180,11 @@ const RegisterForms: React.FC = () => {
                             ))}
                         </select>
                         <input className={styles.formField} type="text" placeholder="Job Role" onChange={(e) => setStudentData({ ...studentData, jobRole: e.target.value })} />
-                        <span className={styles.uploadCon}>
-                            <span className={styles.uploadText}>Upload your resume</span>
-                            <input className={styles.formField} type="url" onChange={(e) => setStudentData({ ...studentData, resume: e.target.value })} />
-                        </span>
+                        {/* <span className={styles.uploadCon}> */}
+                            {/* <span className={styles.uploadText}>Upload your resume url</span> */}
+                            <input className={styles.formField} type="url" placeholder="resume url (e.g. google drive link, portfolio)" onChange={(e) => setStudentData({ ...studentData, resume: e.target.value })} />
+                        {/* </span> */}
+                        <input className={styles.formField} type="password" placeholder="Password" onChange={(e) => setStudentData({ ...studentData, password: e.target.value })} />
                         <button className={styles.button} onClick={handleStudentSubmit}>Submit</button>
                     </>
                 )}
@@ -188,21 +200,22 @@ const RegisterForms: React.FC = () => {
                         <input className={styles.formField} type="url" placeholder="Company Website" onChange={(e) => setRecruiterData({ ...recruiterData, companySite: e.target.value })} />
                         {recruiterTuples.map((tuple, index) => (
                             <div key={index} className={styles.tuple1}>
-                                <select className={styles.formField} onChange={(e) => handleRecruiterTupleChange(index, 'sector', e.target.value)}>
-                                    <option value="">Select Sector</option>
-                                    {sectorOptions.map((option) => (
-                                        <option key={option.value} value={option.value}>
-                                            {option.label}
-                                        </option>
-                                    ))}
-                                </select>
-                                <input className={styles.formField} type="number" placeholder="Job Openings" onChange={(e) => handleRecruiterTupleChange(index, 'jobOpenings', e.target.value)} />
-                                <input className={styles.formField} type="text" placeholder="Job Description" onChange={(e) => handleRecruiterTupleChange(index, 'jobDescription', e.target.value)} />
-                                <input className={styles.formField} type="number" placeholder="Experience Required" onChange={(e) => handleRecruiterTupleChange(index, 'experienceRequired', e.target.value)} />
-                                {index > 0 && <X className={styles.trashIcon} onClick={() => removeRecruiterTuple(index)} />}
+                            <select className={styles.formField} onChange={(e) => handleRecruiterTupleChange(index, 'sector', e.target.value)}>
+                                <option value="">Select Sector</option>
+                                {sectorOptions.map((option) => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                                <input className={styles.formField} type="number" placeholder="Job Openings" value={tuple.jobOpenings} onChange={(e) => handleRecruiterTupleChange(index, 'jobOpenings', e.target.value)} />
+                                <input className={styles.formField} type="text" placeholder="Job Description" value={tuple.jobDescription} onChange={(e) => handleRecruiterTupleChange(index, 'jobDescription', e.target.value)} />
+                                <input className={styles.formField} type="number" placeholder="Experience Required" value={tuple.experienceRequired} onChange={(e) => handleRecruiterTupleChange(index, 'experienceRequired', e.target.value)} />
+                                <button className={styles.removeButton} onClick={() => removeRecruiterTuple(index)}><X /></button>
                             </div>
                         ))}
-                        <PlusCircleIcon className={styles.plusIcon} onClick={addRecruiterTuple} />
+                        <PlusCircleIcon className={styles.plusIcon} onClick={addRecruiterTuple}/>
+                        <input className={styles.formField} type="password" placeholder="Password" onChange={(e) => setRecruiterData({ ...recruiterData, password: e.target.value })} />
                         <button className={styles.button} onClick={handleRecruiterSubmit}>Submit</button>
                     </>
                 )}
@@ -212,27 +225,28 @@ const RegisterForms: React.FC = () => {
                 {activeForm === 'campus' && (
                     <>
                         <input className={styles.formField} type="text" placeholder="University Name" onChange={(e) => setCampusData({ ...campusData, universityName: e.target.value })} />
-                        <input className={styles.formField} type="url" placeholder="University Website" onChange={(e) => setCampusData({ ...campusData, website: e.target.value })} />
-                        <input className={styles.formField} type="email" placeholder="University Email" onChange={(e) => setCampusData({ ...campusData, coordinatorEmail: e.target.value })} />
-                        <input className={styles.formField} type="text" placeholder="Placement Coordinator Name" onChange={(e) => setCampusData({ ...campusData, coordinatorName: e.target.value })} />
+                        <input className={styles.formField} type="url" placeholder="University Website" onChange={(e) => setCampusData({ ...campusData, universitySite: e.target.value })} />
+                        <input className={styles.formField} type="email" placeholder="Coordinator Email" onChange={(e) => setCampusData({ ...campusData, coordinatorEmail: e.target.value })} />
+                        <input className={styles.formField} type="text" placeholder="Coordinator Name" onChange={(e) => setCampusData({ ...campusData, coordinatorName: e.target.value })} />
                         <input className={styles.formField} type="tel" placeholder="Coordinator Phone Number" onChange={(e) => setCampusData({ ...campusData, coordinatorPhoneNumber: e.target.value })} />
                         <input className={styles.formField} type="text" placeholder="University Address" onChange={(e) => setCampusData({ ...campusData, address: e.target.value })} />
-                        <input className={styles.formField} type="text" placeholder="Pin Code" onChange={(e) => setCampusData({ ...campusData, pinCode: e.target.value })} />
+                        <input className={styles.formField} type="text" placeholder="Pincode" onChange={(e) => setCampusData({ ...campusData, pinCode: e.target.value })} />
                         {campusTuples.map((tuple, index) => (
                             <div key={index} className={styles.tuple2}>
-                                <select className={styles.formField} onChange={(e) => handleCampusTupleChange(index, 'sector', e.target.value)}>
-                                    <option value="">Select Sector</option>
-                                    {sectorOptions.map((option) => (
-                                        <option key={option.value} value={option.value}>
-                                            {option.label}
-                                        </option>
-                                    ))}
-                                </select>
-                                <input className={styles.formField} type="number" placeholder="Job Openings" onChange={(e) => handleCampusTupleChange(index, 'jobOpenings', e.target.value)} />
-                                {index > 0 && <X className={styles.trashIcon} onClick={() => removeCampusTuple(index)} />}
+                                  <select className={styles.formField} onChange={(e) => handleRecruiterTupleChange(index, 'sector', e.target.value)}>
+                                <option value="">Select Sector</option>
+                                {sectorOptions.map((option) => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                                <input className={styles.formField} type="number" placeholder="Job Openings" value={tuple.jobOpenings} onChange={(e) => handleCampusTupleChange(index, 'jobOpenings', e.target.value)} />
+                                <button className={styles.removeButton} onClick={() => removeCampusTuple(index)}><X /></button>
                             </div>
                         ))}
-                        <PlusCircleIcon className={styles.plusIcon} onClick={addCampusTuple} />
+                        <PlusCircleIcon className={styles.plusIcon} onClick={addCampusTuple}/> 
+                        <input className={styles.formField} type="password" placeholder="Password" onChange={(e) => setCampusData({ ...campusData, password: e.target.value })} />
                         <button className={styles.button} onClick={handleCampusSubmit}>Submit</button>
                     </>
                 )}
