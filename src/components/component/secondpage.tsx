@@ -8,7 +8,7 @@ export default function SecondPage() {
   const [clicked, setClicked] = useState<number | null>(null);
 
   const colleges = [
-    { id: 9, name: 'College 3', logo: '/AMU.png', url: 'https://www.amu.ac.in' },
+    { id: 9, name: 'College 3', logo: '/amu.png', url: 'https://www.amu.ac.in' },
     { id: 10, name: 'College 3', logo: '/IITM.png', url: 'https://www.iitm.ac.in' },
     { id: 11, name: 'College 3', logo: '/ru.png', url: 'https://www.uniraj.ac.in' },
     { id: 12, name: 'College 3', logo: '/bitsp.png', url: 'https://www.bits-pilani.ac.in' },
