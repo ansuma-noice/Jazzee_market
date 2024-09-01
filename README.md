@@ -95,4 +95,4 @@ Ensure you have the following installed on your machine:
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/ansuma-noice/zazzee_market.git
+   git clone https://github.com/ansuma-noice/Jazzee_market.git
