@@ -36,7 +36,7 @@
     border: none;
     cursor: pointer;
     border-radius: 10px;
-    font-size: 0.8rem; /* Optional: add a subtle shadow */
+    font-size: 0.8rem; 
     width:90px;
     transition: ease-in-out;
     text-align: center;
@@ -113,9 +113,9 @@
     font-size: 12px;
     z-index: 1000;
     white-space: nowrap;
-    transform: translate(-50%, -10px); /* Adjust to place above the button */
-    pointer-events: none; /* Prevent tooltip from blocking mouse events */
-    top: -30px; /* Adjust as needed to position above the button */
+    transform: translate(-50%, -10px);
+    pointer-events: none; 
+    top: -30px; 
   }
   .contactButton1 {
     display: flex;
@@ -123,18 +123,18 @@
   }
 
   .resumeLink {
-    color: grey; /* Default color */
-    text-decoration: underline; /* Remove underline */
-    transition: color 0.3s; /* Smooth transition for color change */
+    color: grey; 
+    text-decoration: underline;
+    transition: color 0.3s; 
     display: flex;
   }
   
   .resumeLink:hover {
-    color: rgb(75, 75, 139); /* Color on hover */
+    color: rgb(75, 75, 139); 
   }
   
   .resumeLink:active {
-    color: rgb(42, 42, 79); /* Color when clicked */
+    color: rgb(42, 42, 79); 
   }
  .h1{
   font-weight: bold;
@@ -160,9 +160,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
-  background-color: transparent; /* No background color */
-  color: #fff; /* White text color */ /* Larger font size for loader text */
-  font-weight: bold; /* Make the text bold */
-  text-align: center; /* Center align the text */
+  height: 100vh; 
+  background-color: transparent; 
+  color: #fff;  
+  font-weight: bold; 
+  text-align: center;  
 }

@@ -1,4 +1,4 @@
-/* components/Navbar.module.css */
+
 .navbar {
   width: 100%;
   height: 6rem;
@@ -11,124 +11,23 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.6); /* Darker, semi-transparent color */
-  backdrop-filter: blur(10px); /* Frosted glass effect */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for contrast */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Drop shadow to show height */
+  background-color: rgba(0, 0, 0, 0.6); 
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease,
-    box-shadow 0.3s ease; /* Smooth transition */
+    box-shadow 0.3s ease; 
 }
 
 .scrolled {
-  background-color: #000000; /* Change this color as needed */
+  background-color: #000000; 
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo img {
-  height: 50px; /* Adjust based on your logo size */
-}
-.getStartedButton {
-  margin-top: 10px;
-  padding: 5px 10px;
-  font-size: 1 rem;
-  color: #fff;
-  background-color: #0070f3; /* Button color */
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  text-align: center;
-  cursor: pointer;
-  display: inline-block; /* Ensure the button is inline-block for proper sizing */
+  height: 50px; 
 }
 
-
-.getStartedButton:hover {
-  background-color: #005bb5; /* Darker button color on hover */
-}
-
-.userIcon {
-  cursor: pointer;
-  position: relative;
-}
-
-.userCard {
-  position: absolute;
-  top: 70px; /* Adjust as needed */
-  right: 10px;
-  background-color: white;
-  color: black;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 250px; /* Adjust as needed */
-  height: 250px;
-  z-index: 1000;
-  margin-right: 10px;
-}
-
-.userContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.userImageWrapper {
-  margin-bottom: 10px;
-}
-
-.userImage {
-  width: 50px; /* Adjust as needed */
-  height: 50px; /* Adjust as needed */
-  border-radius: 50%;
-}
-
-.userInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.userFirstName {
-  font-weight: bold;
-  font-size: 1.2rem; /* Adjust as needed */
-}
-
-.userFullName {
-  font-size: 1rem; /* Adjust as needed */
-  color: gray;
-}
-
-.userEmail {
-  font-size: 0.9rem; /* Adjust as needed */
-  color: gray;
-}
-
-.logoutButton {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-  background-color: #f44336; /* Red color for logout button */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  gap: 8px; /* Space between icon and text */
-}
-
-.logoutButton:hover {
-  background-color: #d32f2f; /* Darker red on hover */
-}
-
-.logoutButton svg {
-  width: 16px; /* Adjust size of the icon */
-  height: 16px; /* Adjust size of the icon */
-}
 .searchContainer {
   display: flex;
   align-items: center;
