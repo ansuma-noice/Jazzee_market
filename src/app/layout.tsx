@@ -3,7 +3,6 @@
 
 import { cn } from '@/lib/utils'
 import './globals.css'
-import { Head } from 'next/document'
 
 
 export default function Layout({ children }: { children: React.ReactNode }) {

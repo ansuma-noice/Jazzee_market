@@ -77,6 +77,7 @@ const filteredRecruiterData = recruiters.filter((recruit) =>
     // Fetch all campus job tuples
     getRecruiters();
   }, []);
+  
   const handleEmailCopy = (email: string, e: React.MouseEvent) => {
     window.location.href = `mailto:${email}`;
     setTooltip({ text: 'Mail client opened', x: e.clientX, y: e.clientY });

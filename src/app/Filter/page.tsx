@@ -154,8 +154,8 @@ const FilterPage: NextPage = () => {
                                     </div>
                                 </div>
                                 <div className={styles.jobTuple}>
-                                    {campus.jobTuples.map((job, index) => (
-                                        <div key={index} className={styles.jobDetail}>
+                                    {campus.jobTuples.map((job, jobIndex) => (
+                                        <div key={jobIndex} className={styles.jobDetail}>
                                             <p> <strong>Sector:</strong> {job.sector}</p>
                                             <p><strong>Talent Pool:</strong> {job.jobOpenings}</p>
                                         </div>
@@ -188,18 +188,22 @@ const FilterPage: NextPage = () => {
             {selectedFilter === 'Student' && (
                 <div className={styles.details}>
                     {filteredStudentData.map((student, index) => (
-                        <div className={styles.campusBlock}>
+                        <div key={index} className={styles.campusBlock}>
                             <h1 className={styles.h1}><strong>{student.name}</strong></h1>
-                            <div key={index} className={styles.studentCard}>
-                                <div className={styles.uni}><UniversityIcon /><strong></strong>{student.collegeName}</div>
-                                <div><strong> <a
-                                    href={`https://www.google.com/search?q=${encodeURIComponent(student.resume)}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={styles.resumeLink}
-                                >
-                                    <Link />Resume
-                                </a></strong></div>
+                            <div className={styles.studentCard}>
+                                <div className={styles.uni}><UniversityIcon /><strong>{student.collegeName}</strong></div>
+                                <div>
+                                    <strong>
+                                        <a
+                                            href={`https://www.google.com/search?q=${encodeURIComponent(student.resume)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={styles.resumeLink}
+                                        >
+                                            <Link />Resume
+                                        </a>
+                                    </strong>
+                                </div>
                             </div>
 
                             <div className={styles.jobTuple}>
