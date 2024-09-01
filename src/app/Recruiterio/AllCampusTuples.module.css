@@ -1,0 +1,109 @@
+/* AllCampusTuples.module.css */
+
+.container {
+  margin-top: 50px;
+  padding: 40px;
+}
+
+.recruiterBlock {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #ece5e5;
+}
+
+.companyDetails {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 150px;
+}
+
+.companyDetails div {
+  margin-bottom: 10px;
+}
+
+.jobTuple {
+  margin-bottom: 20px;
+  border-top: 1px solid #938c8c;
+  padding-top: 10px;
+}
+
+.jobDetails,
+.jobDescription {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 50px;
+}
+
+.contactButton {
+  background-color: #074f9d;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.contactButton:hover {
+  background-color: #0056b3;
+}
+.h1 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  margin-bottom: 10px;
+}
+.tooltip {
+  position: absolute;
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 1000;
+  white-space: nowrap;
+  transform: translate(-50%, -10px); /* Adjust to place above the button */
+  pointer-events: none; /* Prevent tooltip from blocking mouse events */
+  top: -30px; /* Adjust as needed to position above the button */
+}
+.resumeLink {
+  color: grey; /* Default color */
+  text-decoration: underline; /* Remove underline */
+  transition: color 0.3s; /* Smooth transition for color change */
+  display: flex;
+}
+
+.resumeLink:hover {
+  color: rgb(75, 75, 139); /* Color on hover */
+}
+
+.resumeLink:active {
+  color: rgb(42, 42, 79); /* Color when clicked */
+}
+/* Loader styles */
+/* Loader container */
+/* Loader container */
+.loadi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: transparent; /* No background color */
+  color: #fff; /* White text color */ /* Larger font size for loader text */
+  font-weight: bold; /* Make the text bold */
+  text-align: center; /* Center align the text */
+}
+
+/* Error message */
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: transparent; /* Light red background */
+  color: #d9534f; /* Red text color */
+  font-size: 1.2rem;
+  text-align: center;
+}

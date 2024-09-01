@@ -1,26 +1,24 @@
-import { NextRequest, NextResponse } from 'next/server';
-import connect from '@/lib/mongodb';
-import Campus from '@/models/Campus'; // Assuming the model file is correctly named as 'Student'
-import bcrypt from 'bcryptjs';
+import { NextRequest, NextResponse } from "next/server";
+import connect from "@/lib/mongodb";
+import Campus from "@/models/Campus"; // Assuming the model file is correctly named as 'Student'
+import bcrypt from "bcryptjs";
+import { getCampusFromToken } from "@/app/helper/getCampusData";
 
 // Establish a connection to the MongoDB database
 connect();
 
-export async function POST(req: NextRequest,res:NextResponse) {
+export async function POST(req: NextRequest, res: NextResponse) {
   try {
     // Parse the request body
-    const { coordinatorEmail, password,designation } = await req.json();
-    const exists=false;
+    const { coordinatorEmail, password, designation } = await req.json();
+    const exists = false;
 
     // Find the student by email
     const campus = await Campus.findOne({ coordinatorEmail });
 
     if (!campus) {
       // If the student does not exist, return a 404 status with an error message
-      return NextResponse.json(
-        { error: "Student not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "Student not found" }, { status: 404 });
     }
 
     // Compare the provided password with the stored hashed password
@@ -36,18 +34,28 @@ export async function POST(req: NextRequest,res:NextResponse) {
 
     // If credentials are valid, return a success response
     return NextResponse.json(
-      { 
-        exists:true,
+      {
+        exists: true,
         message: "Login successful",
-        designation: "Recruiter"
+        designation: "Recruiter",
       },
       { status: 200 }
     );
   } catch (error: any) {
     // Catch any errors and return a 500 status with the error message
-    return NextResponse.json(
-      { error: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+export async function GET(req: NextRequest) {
+  try {
+    const campusId = await getCampusFromToken(req);
+    const user = await Campus.findOne({ _id: campusId }).select("-password");
+    return NextResponse.json({
+      message: "Campus found",
+      data: user,
+    });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 400 });
   }
 }

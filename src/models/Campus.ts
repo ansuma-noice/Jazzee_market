@@ -9,7 +9,7 @@ const CampusSchema = new mongoose.Schema({
   universitySite: { type: String, required: true },                 // University website URL
   coordinatorPhoneNumber: { type: Number, required: true },         // Coordinator's phone number
   collegeAddress: { type: String, required: true },                 // Address of the college
-  pinCode: { type: Number, required: true },                        // Postal code of the college location
+  pinCode: { type: String, required: true },                        // Postal code of the college location
   jobTuples: [
     {
       sector: { type: String, required: true },                     // Sector of the job

@@ -50,11 +50,11 @@ const Login: React.FC = () => {
       if (data.exists) {
         // Redirect based on designation
         if (designation === 'recruiter') {
-          router.push('/recruiter'); // Redirect to recruiter page
+          router.push('/Filter'); // Redirect to recruiter page
         } else if (designation === 'student') {
-          router.push('/recruitee'); // Redirect to recruitee page
+          router.push('/Recruiterio'); // Redirect to recruitee page
         } else if (designation === 'campus') {
-          router.push('/recruitee'); // Redirect to campus page
+          router.push('/Recruiterio'); // Redirect to campus page
         }
       } else {
         setError(data.message || 'Invalid credentials.');

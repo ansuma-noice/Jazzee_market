@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import connect from '@/lib/mongodb';
 import Student from '@/models/Student'; // Assuming the model file is correctly named as 'Student'
 import bcrypt from 'bcryptjs';
+import { getStudentFromToken } from '@/app/helper/getStudentData';
 
 // Establish a connection to the MongoDB database
 connect();
@@ -9,7 +10,7 @@ connect();
 export async function POST(req: NextRequest,res:NextResponse) {
   try {
     // Parse the request body
-    const { email, password,designation } = await req.json();
+    const { email, password, designation } = await req.json();
     const exists=false;
 
     // Find the student by email
@@ -49,5 +50,19 @@ export async function POST(req: NextRequest,res:NextResponse) {
       { error: error.message },
       { status: 500 }
     );
+  }
+}
+
+
+export async function GET(req:NextRequest){
+  try {
+    const campusId = await getStudentFromToken(req);
+    const user = await Student.findOne({_id: campusId}).select("-password");
+    return NextResponse.json({
+      message: "Student found",
+      data: user
+    })
+  } catch (error: any) {
+    return NextResponse.json({error: error.message}, {status: 400})
   }
 }

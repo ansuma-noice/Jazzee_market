@@ -1,18 +1,37 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import connect  from "@/lib/mongodb";
+import connect from "@/lib/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import Recruiter from "@/models/Recruiter";
+import Student from "@/models/Student";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { errorMonitor } from "events";
 
-connect();
+async function Connecter() {
+  try {
+    await connect();
+  } catch (error: any) {
+    console.log(error);
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
+    await Connecter();
     const reqBody = await request.json();
-    const { designation,name, workEmail, phoneNumber, companyName,companySite, jobTuples ,password} = reqBody;
+    const {
+      designation,
+      name,
+      workEmail,
+      phoneNumber,
+      companyName,
+      companySite,
+      jobTuples,
+      password,
+    } = reqBody;
 
     const user = await Recruiter.findOne({ workEmail });
-    
+
     if (user) {
       return NextResponse.json(
         { error: "User already exists" },
@@ -29,19 +48,40 @@ export async function POST(request: NextRequest) {
       companyName,
       companySite,
       jobTuples,
-      password: hashedPassword, 
+      password: hashedPassword,
     });
 
     await newUser.save();
 
-    return NextResponse.json(
+    const tokenRecruiter = jwt.sign(
+      { id: newUser._id, designation: "Recruiter" },
+      process.env.TOKEN_SECRET2!,
+      { expiresIn: "1h" }
+    );
+
+    const res = NextResponse.json(
       {
         message: "User created successfully",
         success: true,
       },
       { status: 201 }
     );
+
+    res.cookies.set("token2", tokenRecruiter, {
+      httpOnly: true,
+    });
   } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    await Connecter();
+    const recruiters = await Recruiter.find({});
+    return NextResponse.json(recruiters, { status: 200 });
+  } catch (error: any) {
+    console.log(error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

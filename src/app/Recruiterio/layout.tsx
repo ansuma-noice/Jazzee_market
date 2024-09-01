@@ -4,9 +4,8 @@
 import { Bangers } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
-import './globals.css'
 import { Head } from 'next/document'
-import { RegistrationProvider } from './component/RegistrationContext'
+import { RegistrationProvider } from '../component/RegistrationContext'
 
 const fontHeading = Bangers({
   subsets: ['latin'],

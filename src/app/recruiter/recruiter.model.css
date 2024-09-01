@@ -1,0 +1,47 @@
+/* .container {
+    padding: 20px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .designation {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .mainContent {
+    margin-top: 20px;
+  }
+  
+  .sectionButtons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .button, .activeButton {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .activeButton {
+    background-color: #0070f3;
+    color: white;
+  }
+  
+  .filter {
+    margin: 20px 0;
+  }
+  
+  .content {
+    margin-top: 20px;
+  }
+  
+  .profile {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+   */
