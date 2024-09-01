@@ -4,7 +4,6 @@ import connect from "@/lib/mongodb";
 import Student from "@/models/Student"; // Assuming the model file is correctly named as 'student'
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 // Establish a connection to the MongoDB database
 async function Connecter() {
   try {
@@ -64,14 +63,6 @@ export async function POST(request: NextRequest) {
 
     console.log("\n\n-----saved-----\n\n");
 
-    const tokenStudent = jwt.sign(
-      { id: newStudent._id, designation: "Student" },
-      process.env.TOKEN_SECRET3!,
-      { expiresIn: "1h" }
-    );
-
-    console.log("\n\n-----tokened-----\n\n");
-
     const res = NextResponse.json(
       {
         message: "User created successfully",
@@ -79,10 +70,6 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     );
-
-    res.cookies.set("token3", tokenStudent, {
-      httpOnly: true,
-    });
 
     return res;
   } catch (error: any) {
