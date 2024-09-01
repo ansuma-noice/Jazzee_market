@@ -1,32 +1,29 @@
 /* components/LandingPage.module.css */
-@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 .landingPage {
-    /* Replace with your actual image path */
-    background-size: cover;                    /* Ensures the image covers the entire screen */
-    background-position: center;               /* Centers the image */
-    background-repeat: no-repeat;              /* Prevents the image from repeating */
-    height: 100vh;                             /* Full viewport height */
-    width: 100vw;                              /* Full viewport width */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    text-align: center;
-  }
-  
-  .headline {
-    font-size: 3.8rem;
-    font-weight: bold;
-    margin-top: 250px; /* Space between headline and carousel */
-    font-family: 'Bangers';
-  }
-  
-  .carouselContainer {
-    width: 100%;/* Max width for carousel container */
-    overflow: hidden;/* Position carousel at the bottom */
-    bottom: 0;               /* Center carousel horizontally */
-    margin-bottom: 5px;         
-                  /* Space between carousel and bottom edge */
-  }
-  
+  /* Replace with your actual image path */
+  background-size: cover; /* Ensures the image covers the entire screen */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.headline {
+  font-size: 3.8rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adjust values as needed */
+  margin-top: 300px; /* Space between headline and carousel */
+}
+
+.carouselContainer {
+  width: 100%; /* Max width for carousel container */
+  overflow: hidden; /* Position carousel at the bottom */
+  bottom: 0; /* Center carousel horizontally */
+  margin-bottom: 5px;
+  /* Space between carousel and bottom edge */
+}

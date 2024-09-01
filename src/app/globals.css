@@ -5,35 +5,80 @@
 /* styles/globals.css */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
+@font-face {
+  font-family: "Righteous";
+  src: url("/fonts/Righteous.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+  font-family: "Righteous", sans-serif;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.italic {
+  font-style: italic;
+}
+
 html,
 body {
-  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  background-image: url("/bg2.jpg"); /* Prevent horizontal scroll */
+  position: relative; /* Needed for proper positioning of pseudo-elements */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Use viewport width for full coverage */
+  height: 100vh; /* Use viewport height for full coverage */
+  background-image: url("/bg3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(8px); /* Apply the blur effect to the background */
+  z-index: -1; /* Place it behind the content */
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Use viewport width for full coverage */
+  height: 100vh; /* Use viewport height for full coverage */
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: -1; /* Place it behind the content */
 }
 
 * {
   box-sizing: border-box;
 }
 
+/* Customize scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
+  position: absolute; /* Ensures it is on top of other components */
 }
- 
+
 ::-webkit-scrollbar-track {
-  background-color:  rgba(7, 38, 91, 0.5);
+  background-color: transparent; /* Makes the scrollbar track background invisible */
 }
- 
+
 ::-webkit-scrollbar-thumb {
-  background-color:  #938b8b;
+  z-index: 1500;
+  background-color: transparent; /* Changes the scrollbar thumb color to white */
   border-radius: 10px;
-  border: 5px solid  #938b8b;
+  border: 2px solid transparent; /* Optional: Keeps the border around the thumb white */
   background-clip: content-box;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background-color:  #e2dddd;
+  background-color: #f5f5f5; /* Lighter shade on hover */
 }

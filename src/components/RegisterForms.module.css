@@ -9,7 +9,9 @@
 .titleContainer {
   display: flex;
   justify-content: space-around;
-  width: 100%;
+  width: 80%;
+  max-width: 800px;
+  margin: 20px auto;
   padding: 20px 0;
 }
 
@@ -19,14 +21,19 @@
   padding: 15px 0;
   cursor: pointer;
   font-size: 1.2rem;
+  border-radius: 10px;
   color: #938b8b;
+  background-color: rgba(0, 0, 0, 0.2);
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .activeTitle {
   color: rgb(240, 233, 233);
   font-size: x-large;
-  background-color: rgba(12, 32, 65, 0.5);
+  background-color: rgba(0, 0, 0, 0.6); /* Darker, semi-transparent color */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for contrast */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   transition: transform 1s ease-in;
 }
 
@@ -36,8 +43,10 @@
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
-  background-color: rgba(7, 38, 91, 0.5);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.6); /* Darker, semi-transparent color */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for contrast */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 }
 
@@ -52,8 +61,10 @@
   border-radius: 5px;
   border: 1px solid rgba(12, 32, 65, 0.5);
   font-size: 1rem;
-  color: white;
-  background-color: rgba(8, 27, 58, 0.5);
+  color: grey;
+  background-color: rgba(0, 0, 0, 0.1); /* Darker, semi-transparent color */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .textareaField {
@@ -80,6 +91,27 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+.plusIcon {
+  margin-top:1rem;
+  background-color: transparent; /* Transparent background */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-left: 10px;
+  transition: color 0.3s ease;
+  width: 32px; /* Set width explicitly */
+  height: 32px;
+  color: white;
+}
+
+.plusIcon:hover {
+  color: blue; /* Light gray background on hover */
+  transform: scale(1.1); /* Slightly enlarge the icon on hover */
+}
+
+.plusIcon:active {
+  transform: scale(0.95); /* Slightly shrink the icon on active click */
+}
+
 
 .button:hover {
   background-color: #0379f6cd;
@@ -100,7 +132,9 @@
 
 .tuple1 {
   margin-bottom: 20px;
-  background-color: rgba(10, 26, 53, 0.5);
+  background-color: rgba(0, 0, 0, 0.1); /* Darker, semi-transparent color */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 10px;
   border-radius: 5px;
   display: block;
@@ -108,7 +142,9 @@
 }
 .tuple2 {
   margin-bottom: 20px;
-  background-color:rgba(10, 26, 53, 0.5);
+  background-color: rgba(0, 0, 0, 0.1); /* Darker, semi-transparent color */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 10px;
   border-radius: 5px;
   display: flex;
@@ -133,17 +169,6 @@
   color: rgba(250, 71, 71, 0.8);
 }
 
-.plusIcon {
-  cursor: pointer;
-  color: #fff;
-  font-size: 1.5rem;
-  margin: 20px 0;
-  transition: color 0.3s ease;
-}
-
-.plusIcon:hover {
-  color: #0379f6cd;
-}
 
 .uploadText {
   color: #fff;
@@ -174,4 +199,8 @@
   .title {
     padding: 10px 0;
   }
+}
+
+.tuple{
+  display: flex;
 }

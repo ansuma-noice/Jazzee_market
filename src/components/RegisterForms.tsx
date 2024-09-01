@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './RegisterForms.module.css';
-import { Cross, PlusCircleIcon, X } from 'lucide-react';
+import { Cross, MinusCircleIcon, PlusCircleIcon, PlusIcon, X } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useRegistration } from '@/app/component/RegistrationContext';
 
 interface SectorOption {
     value: string;
@@ -45,8 +44,7 @@ const RegisterForms: React.FC = () => {
     const [activeForm, setActiveForm] = useState<'student' | 'recruiter' | 'campus' | null>('student');
     const [campusTuples, setCampusTuples] = useState<CampusTuple[]>([{ sector: '', jobOpenings: '' }]);
     const [recruiterTuples, setRecruiterTuples] = useState<RecruiterTuple[]>([{ sector: '', jobOpenings: '', jobDescription: '', experienceRequired: '' }]);
-    const { setRegistrationType } = useRegistration();
-
+   
     const router = useRouter();
 
     // Form data states
@@ -99,7 +97,6 @@ const RegisterForms: React.FC = () => {
             if (!response.ok) throw new Error(data.error || 'Failed to register student.');
             alert('Student registered successfully!');
             router.push('/Recruiterio');
-            setRegistrationType('Student');
         } catch (error) {
             console.error(error);
             alert('An error occurred while registering the student.');
@@ -134,7 +131,7 @@ const RegisterForms: React.FC = () => {
             const data = await response.json();
             if (!response.ok) throw new Error(data.error || 'Failed to register campus.');
             alert('Campus registered successfully!');
-            setRegistrationType('Campus');
+           
             router.push('/Recruiterio');
         } catch (error) {
             console.error(error);
@@ -232,14 +229,11 @@ const RegisterForms: React.FC = () => {
                                     value={tuple.experienceRequired}
                                     onChange={(e) => handleRecruiterTupleChange(index, 'experienceRequired', e.target.value)}
                                 />
-                                <button type="button" onClick={() => removeRecruiterTuple(index)}>
-                                    Remove
-                                </button>
+                                <MinusCircleIcon className={styles.trashIcon} type="button" onClick={() => removeRecruiterTuple(index)}/>
                             </div>
                         ))}
-                        <button className={styles.button} type="button" onClick={addRecruiterTuple}>
-                            Add Tuple
-                        </button>
+                       <PlusCircleIcon className={styles.plusIcon} type="button" onClick={addRecruiterTuple} />
+
 
                         <input className={styles.formField} type="password" placeholder="Password" value={recruiterData.password} onChange={(e) => setRecruiterData({ ...recruiterData, password: e.target.value })} />
                         <button className={styles.button} onClick={handleRecruiterSubmit}>Submit</button>
@@ -275,18 +269,16 @@ const RegisterForms: React.FC = () => {
                                 <input
                                     className={styles.formField}
                                     type="number"
-                                    placeholder="Job Openings"
+                                    placeholder="Talent Pool"
                                     value={tuple.jobOpenings}
                                     onChange={(e) => handleCampusTupleChange(index, 'jobOpenings', e.target.value)}
                                 />
-                                <button type="button" onClick={() => removeCampusTuple(index)}>
-                                    Remove
-                                </button>
+                                <MinusCircleIcon className={styles.trashIcon} type="button" onClick={() => removeCampusTuple(index)}/>
+
                             </div>
                         ))}
-                        <button className={styles.button} type="button" onClick={addCampusTuple}>
-                            Add Tuple
-                        </button>
+                       <PlusCircleIcon className={styles.plusIcon} type="button" onClick={addCampusTuple} />
+
 
                         <input className={styles.formField} type="password" placeholder="Password" value={campusData.password} onChange={(e) => setCampusData({ ...campusData, password: e.target.value })} />
                         <button className={styles.button} onClick={handleCampusSubmit}>Submit</button>
@@ -294,8 +286,8 @@ const RegisterForms: React.FC = () => {
                 )}
             </div>
             <Link href="/login" className={styles.link}>
-          Existing user? Login →
-        </Link>
+                Existing user? Login →
+            </Link>
         </div>
     );
 };

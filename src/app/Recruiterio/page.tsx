@@ -30,6 +30,8 @@ const AllCampusTuples: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [tooltip, setTooltip] = useState<{ text: string, x: number, y: number } | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
 
   const handleMouseEnter = (text: string, e: React.MouseEvent) => {
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -62,6 +64,13 @@ const AllCampusTuples: React.FC = () => {
     }
   }
 
+  const handleSearch = (term: string) => {
+    setSearchTerm(term.toLowerCase());
+};
+const filteredRecruiterData = recruiters.filter((recruit) =>
+  recruit.companyName.toLowerCase().includes(searchTerm)
+);
+
 
 
   useEffect(() => {
@@ -79,9 +88,9 @@ const AllCampusTuples: React.FC = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar onSearch={handleSearch} />
       <div className={styles.container}>
-        {recruiters.map((recruiter, index) => (
+        {filteredRecruiterData.map((recruiter, index) => (
           <div key={index} className={styles.recruiterBlock}>
             <div className={styles.h1}><Building2 />
               <strong>{recruiter.companyName}</strong>

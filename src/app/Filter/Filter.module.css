@@ -5,11 +5,15 @@
   }
   
   .filterButtons {
+    margin-top: 80px;
     margin-bottom: 20px;
     display: flex;
-    gap: 30px;
+    gap: 5px;
     color:#fff;
     text-align: center;
+    width: 200px;
+    background-color: gray;
+    border-radius: 10px;
   }
   .selectedButton {
     background-color:#ece5e5; /* White background for selected button */
@@ -18,9 +22,9 @@
     font-weight: bold; /* Optional: make the selected button text bold */
     box-shadow: 10px 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    font-size: 3rem; /* Optional: add a subtle shadow */
-    width:300px;
-    transition: ease-in-out;
+    font-size: 1rem; /* Optional: add a subtle shadow */
+    width:120px;
+    transition: ease-in-out ;
   }
 
   .button1 {
@@ -32,8 +36,10 @@
     border: none;
     cursor: pointer;
     border-radius: 10px;
-    font-size:2rem;
+    font-size: 0.8rem; /* Optional: add a subtle shadow */
+    width:90px;
     transition: ease-in-out;
+    text-align: center;
   }
   .button {
     padding: 10px 20px;
@@ -124,19 +130,39 @@
   }
   
   .resumeLink:hover {
-    color: blue; /* Color on hover */
+    color: rgb(75, 75, 139); /* Color on hover */
   }
   
   .resumeLink:active {
-    color: darkblue; /* Color when clicked */
+    color: rgb(42, 42, 79); /* Color when clicked */
   }
  .h1{
   font-weight: bold;
   font-size: 1.5rem;
+  font-family: sans-serif;
   display: flex;
   margin-bottom: 10px;
+  text-shadow: none;
  }
  .uni{
   display: flex;
   gap:2px;
  }
+ .searchInput {
+  width: 100%;
+  padding: 8px;
+  margin: 16px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: transparent; /* No background color */
+  color: #fff; /* White text color */ /* Larger font size for loader text */
+  font-weight: bold; /* Make the text bold */
+  text-align: center; /* Center align the text */
+}

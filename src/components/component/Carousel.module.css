@@ -23,8 +23,8 @@
 .carouselItem img {
   width: 60px; /* Set a fixed width for logos */
   height: 60px; /* Set a fixed height for logos */
-  object-fit: contain; /* Ensure logos maintain aspect ratio */ /* Ensure the image background is transparent */
-  filter: brightness(0) invert(1);
+  object-fit: contain; /* Ensure logos maintain aspect ratio */
+  filter: brightness(0) invert(1) drop-shadow(2px 2px 4px rgba(0, 0, 0, 1)); /* Add shadow */
 }
 
 @keyframes scroll {

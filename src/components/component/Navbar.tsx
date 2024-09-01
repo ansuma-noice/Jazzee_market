@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.logo}>
         <Link href="/">
-        <img src="/jazzee2.png" alt="Company Logo" />
+          <img src="/JAZZEE3.png" alt="Company Logo" />
         </Link>
       </div>
       <Link href="/login" className={styles.getStartedButton}>

@@ -1,80 +1,80 @@
 /* pages/RegisterSteps.module.css */
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    height: 100vh; /* Light background color */
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  .title {
-    font-size: 3.5rem;
-    font-family: 'Bangers';
-    color: #ffffff;
-    margin-bottom: 180px;
-  }
-  
-  .cardsContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center cards horizontally */
-    gap: 20px; /* Space between cards */
-    flex-wrap: nowrap; /* Ensure cards do not wrap */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh; /* Light background color */
+  padding: 20px;
+  box-sizing: border-box;
+}
 
-  }
-  
-  .card {
-    width:300px; /* Increase width */
-    height: 200px; /* Increase height */
-    padding: 60px;
-    background: #fff;
-    border: 2px solid #0070f3; /* Blue border for visibility */
-    border-radius: 10px;
-    text-align: center;
- /* Fixed width for consistency */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-  }
-  
-  .card h2 {
-    margin: 0;
-    font-size: 2.5 rem;
-    color: #0070f3;
-    font-weight:bold;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .card p {
-    margin: 10px 0 0;
-    font-size: 1.2rem;
-    color: #333;
-    font-family:'Times New Roman', Times, serif;
-  }
-  
-  .arrow {
-    font-size: 8rem;
-    color: #c5dffd;
-    line-height: 2rem;
-  }
-  
-  .getStartedButton {
-    margin-top: 100px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    color: #fff;
-    background-color: #0070f3; /* Button color */
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block; /* Ensure the button is inline-block for proper sizing */
-  }
-  
-  .getStartedButton:hover {
-    background-color: #005bb5; /* Darker button color on hover */
-  }
-  
+.title {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 100px;
+}
+
+.cardsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center cards horizontally */
+  gap: 20px; /* Space between cards */
+  flex-wrap: nowrap; /* Ensure cards do not wrap */
+}
+
+.card {
+  width: 300px; /* Fixed width for consistency */
+  height: 200px; /* Fixed height */
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+  border: 1px solid white; /* Lighter border to enhance glass effect */
+  border-radius: 10px;
+  backdrop-filter: blur(10px); /* Adds blur effect behind the card */
+  -webkit-backdrop-filter: blur(10px); /* Ensures compatibility with Safari */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  text-align: center;
+  position: relative;
+  color: #fff; /* Optional: Set text color to contrast with the background */
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 2.5 rem;
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card p {
+  margin: 10px 0 0;
+  font-size: 1.2rem;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.arrow {
+  font-size: 8rem;
+  color: #c5dffd;
+  line-height: 2rem;
+}
+
+.getStartedButton {
+  margin-top: 100px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #0070f3; /* Button color */
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block; /* Ensure the button is inline-block for proper sizing */
+}
+
+.getStartedButton:hover {
+  background-color: #005bb5; /* Darker button color on hover */
+}

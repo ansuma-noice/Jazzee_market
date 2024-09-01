@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import connect from "@/lib/mongodb";
 import Campus from "@/models/Campus"; // Assuming the model file is correctly named as 'Student'
 import bcrypt from "bcryptjs";
-import { getCampusFromToken } from "@/app/helper/getCampusData";
 
 // Establish a connection to the MongoDB database
 connect();
@@ -44,18 +43,5 @@ export async function POST(req: NextRequest, res: NextResponse) {
   } catch (error: any) {
     // Catch any errors and return a 500 status with the error message
     return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-}
-
-export async function GET(req: NextRequest) {
-  try {
-    const campusId = await getCampusFromToken(req);
-    const user = await Campus.findOne({ _id: campusId }).select("-password");
-    return NextResponse.json({
-      message: "Campus found",
-      data: user,
-    });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 400 });
   }
 }

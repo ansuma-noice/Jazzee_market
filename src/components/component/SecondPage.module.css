@@ -1,71 +1,57 @@
+/* Container for the whole page */
 .container {
   display: flex;
-  height: 100vh;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 150px;
+  margin-bottom: 150px;
 }
 
+/* Left half grid layout */
 .leftHalf {
   width: 50%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+  grid-template-rows: repeat(3, auto); /* 3 rows */
+  grid-column-gap: 24px; /* Horizontal gap */
+  grid-row-gap: 30px; /* Vertical gap */
+  padding: 20px; /* Add padding if needed */
+  background-color: transparent; /* Optional: background color for visibility */
 }
-
 .circle {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 10px;
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: box-shadow 0.3s ease-in-out;
+  width: 8rem; /* Fixed width */
+  height: 8rem; /* Fixed height, same as width for a perfect circle */
+  border-radius: 50%; /* Circular shape */
+  overflow: hidden; /* Ensures the image fits within the circle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: shadow for visual effect */
+  background-color: #fff; /* Optional: Background color for better contrast */
 }
 
-/* .glow {
-  box-shadow: 0 0 15px 5px gold;
-  } */
-  .circle:hover {
-    box-shadow: 0 0 15px 5px gold;
-  }
-  
-  .rightHalf {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-  }
-  
-  /* .rightHalf h1 {
-    font-size: 30px;
-    font-family: 'Bangers';
-    text-align: center;
-  } */
-  .rightHalf h1 {
-    font-size: 25px;
-    font-family: 'Bangers';
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid rgb(16, 16, 16); /* The typwriter cursor */
-    white-space: nowrap; /* Keeps the content on a single line */
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-    letter-spacing: .15em; /* Adjust as needed */
-    animation: 
-      typing 8.5s steps(40, end),
-      blink-caret .25s step-end infinite;
-  }
-  
-  /* The typing effect */
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: rgb(248, 248, 248); }
-  }
-  
+/* Ensuring the images fill the circle and maintain aspect ratio */
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images cover the entire circle while maintaining aspect ratio */
+}
+
+/* Right half styling */
+.rightHalf {
+  width: 50%;
+  padding: 20px; /* Add padding if needed */
+  padding-left: 100px;
+}
+
+.rightHalf h1 {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.rightHalf p {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  color: lightsteelblue;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}

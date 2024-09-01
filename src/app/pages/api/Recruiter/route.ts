@@ -2,10 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import connect from "@/lib/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import Recruiter from "@/models/Recruiter";
-import Student from "@/models/Student";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import { errorMonitor } from "events";
 
 async function Connecter() {
   try {
@@ -53,23 +50,11 @@ export async function POST(request: NextRequest) {
 
     await newUser.save();
 
-    const tokenRecruiter = jwt.sign(
-      { id: newUser._id, designation: "Recruiter" },
-      process.env.TOKEN_SECRET2!,
-      { expiresIn: "1h" }
-    );
+    return NextResponse.json({
+      message: "User created successfully",
+      success: true
+  },{status: 201});
 
-    const res = NextResponse.json(
-      {
-        message: "User created successfully",
-        success: true,
-      },
-      { status: 201 }
-    );
-
-    res.cookies.set("token2", tokenRecruiter, {
-      httpOnly: true,
-    });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

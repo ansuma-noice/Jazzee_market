@@ -1,7 +1,8 @@
 /* components/Navbar.module.css */
 .navbar {
   width: 100%;
-  padding: 0px 40px;
+  height: 6rem;
+  padding: 40px;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -10,8 +11,12 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.6); /* Darker, semi-transparent color */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for contrast */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Drop shadow to show height */
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease,
+    box-shadow 0.3s ease; /* Smooth transition */
 }
 
 .scrolled {
@@ -20,7 +25,7 @@
 }
 
 .logo img {
-  height: 100px; /* Adjust based on your logo size */
+  height: 50px; /* Adjust based on your logo size */
 }
 .getStartedButton {
   margin-top: 10px;
@@ -35,6 +40,7 @@
   cursor: pointer;
   display: inline-block; /* Ensure the button is inline-block for proper sizing */
 }
+
 
 .getStartedButton:hover {
   background-color: #005bb5; /* Darker button color on hover */
@@ -122,4 +128,33 @@
 .logoutButton svg {
   width: 16px; /* Adjust size of the icon */
   height: 16px; /* Adjust size of the icon */
+}
+.searchContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.searchInput {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #000000;
+  width:200px;
+  border-radius: 8px;
+
+}
+.searchInput:focus{ 
+  width: 350px;
+  box-shadow: #343333;
+  border-radius: 20px;
+  transition: ease-in 0.4s;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: gray;
 }
